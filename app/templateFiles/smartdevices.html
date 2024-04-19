@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <link rel='icon' type='image/png' href='favi.png'>
+  <title>Smart Devices</title>
+  <style>
+    /* Add some basic styling */
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+    
+    /* Navigation bar container */
+    .navbar {
+      background-color: #14141400;
+      overflow: hidden;
+    }
+    
+    /* Logo image */
+    .navbar img {
+      height: 50px;
+      padding: 10px;
+      float: left;
+    }
+    
+    /* Header text */
+    .navbar h1 {
+      color: #fff;
+      margin: 0;
+      padding: 20px;
+      float: left;
+    }
+    
+    /* Navigation menu */
+    .navbar .menu {
+      float: right;
+    }
+    
+    /* Navigation links */
+    .navbar .menu a {
+      color: #00CCFF;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+      display: inline-block;
+    }
+    /* Slider container */
+    .slider {
+      position: relative;
+      max-width: 100%;
+      overflow: hidden;
+    }
+    
+    /* Slide images */
+    .slider img {
+      width: 100%;
+      height: 570px; /* Adjust the height as needed */
+      object-fit: cover;
+    }
+    
+    /* Slide captions */
+    .slider .caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 20px;
+      color: #fff;
+    }
+    
+    /* 'Read More' button */
+    .slider .read-more {
+      display: inline-block;
+      background-color: #fff;
+      color: #333;
+      padding: 8px 16px;
+      text-decoration: none;
+      margin-top: 10px;
+      border-radius: 4px;
+      font-weight: bold;
+    }
+    /* Hide menu on small screens */
+    @media screen and (max-width: 600px) {
+      .navbar .menu {
+        display: none;
+      }
+      
+      .navbar .menu.show {
+        display: block;
+      }
+      
+      .navbar .icon {
+        display: block;
+        float: right;
+        padding: 16px;
+        color: #fff;
+        cursor: pointer;
+      }
+    }
+    .rmore{
+    text-decoration: none;
+    background-color: rgb(0, 183, 255);
+    color: white;
+    font-size: 150%;
+    font-weight: bold;
+    display: inline-block;
+    padding: 8px 16px;
+    border-radius: 3px;
+  }
+body{
+  background-color: black;
+}
+p{
+  background-color: #00000057;
+}
+    /* .sliderx {
+  width: 100%;
+  height: 300px; 
+  overflow: hidden;
+  position: relative;
+}
+
+.slider-container {
+  display: flex;
+  height: 100%;
+  transition: transform 0.5s ease;
+}
+
+.slide {
+  flex: 0 0 100%;
+  height: 100%;
+  text-align: center;
+  font-size: 24px;
+  line-height: 300px;
+  background-color: #ccc;
+} */
+
+  </style>
+</head>
+<body>
+  <div class='navbar'>
+    <img src='favi.png' alt='Logo'>
+    <h1 style='color: #00CCFF;'><a href='index.html' style='text-decoration: none;color: #00CCFF;'>Hexeba</a></h1>
+    <div class='menu' id='menu'>
+      <button href='signup.html' style='font-weight: bold; background-color:rgba(255, 255, 255, 0);color:#00CCFF;border: radius 5%;font-size:100%;border:none;margin:2% auto;'>Account</button>
+      <button href='signin.html' style='font-weight: bold; background-color:rgba(255, 255, 255, 0);color:#00CCFF;border: radius 5%;font-size:100%;border:none;margin:2% auto;'>Settings</button>
+
+      <!-- <a href='#services' style='font-weight: bold;'>Services</a>
+      <a href='#contact' style='font-weight: bold;'>Contact</a> -->
+    </div>
+    <a class='icon' onclick='toggleMenu()'>&#9776;</a>
+  </div>
+    
+
+<script>
+  function toggleMenu() {
+    var menu = document.getElementById('menu');
+    menu.classList.toggle('show');
+  }
+
+</script>
+</body>
+</html>

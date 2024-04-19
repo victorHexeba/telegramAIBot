@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <link rel='icon' type='image/png' href='../staticFiles/favi.png'>
+  <title>Hexeba</title>
+
+</head>
+<body id="body">
+  <div id='bbody'>
+  </div>
+  <div id='lbody'>
+    <style>
+      /* Add some basic styling */
+      body {
+              font-family: Arial, sans-serif;
+              background-color: #f2f2f2;
+              margin: 0;
+              padding: 0;
+              background-image: url('../staticFiles/robo.jpg');
+              background-size: cover;
+          }
+          
+          .container {
+              max-width: 400px;
+              background-color: #ffffffa9;
+              /* background-image: url('image2.jpg'); */
+              border-radius: 10px;
+              padding: 20px;
+              box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+              margin: 50px auto;
+          }
+  
+          h2 {
+              text-align: center;
+              margin-bottom: 20px;
+          }
+  
+          .input-group {
+              margin-bottom: 20px;
+          }
+  
+          .input-group label {
+              display: block;
+              margin-bottom: 5px;
+          }
+  
+          .input-group input {
+              width: 95%;
+              padding: 10px;
+              font-size: 16px;
+              border-radius: 5px;
+              border: 1px solid #ccc;
+          }
+  
+          .btn {
+              background-color: #00a2ff;
+              color: #fff;
+              padding: 10px 15px;
+              border: none;
+              border-radius: 5px;
+              cursor: pointer;
+              width: 100%;
+          }
+  
+          .btn:hover {
+              background-color: #00a2ff;
+          }
+  
+          .switch-form {
+              text-align: center;
+              margin-top: 20px;
+          }
+  
+          .switch-form a {
+              color: #00a2ff;
+              text-decoration: none;
+          }
+  
+          @media screen and (max-width: 480px) {
+              .container {
+                  max-width: 100%;
+                  margin: 20px;
+              }
+          }
+  
+  
+      
+      /* Navigation bar container */
+      .navbar {
+        background-color: #14141400;
+        overflow: hidden;
+      }
+      
+      /* Logo image */
+      .navbar img {
+        height: 50px;
+        padding: 10px;
+        float: left;
+      }
+      
+      /* Header text */
+      .navbar h1 {
+        color: #fff;
+        margin: 0;
+        padding: 20px;
+        float: left;
+      }
+      
+      /* Navigation menu */
+      .navbar .menu {
+        float: right;
+      }
+      
+      /* Navigation links */
+      .navbar .menu a {
+        color: #00CCFF;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        display: inline-block;
+      }
+      /* Slider container */
+      .slider {
+        position: relative;
+        max-width: 100%;
+        overflow: hidden;
+      }
+      
+      /* Slide images */
+      .slider img {
+        width: 100%;
+        height: 570px; /* Adjust the height as needed */
+        object-fit: cover;
+      }
+      
+      /* Slide captions */
+      .slider .caption {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color: rgba(0, 0, 0, 0.7);
+        padding: 20px;
+        color: #fff;
+      }
+      
+      /* 'Read More' button */
+      .slider .read-more {
+        display: inline-block;
+        background-color: #fff;
+        color: #333;
+        padding: 8px 16px;
+        text-decoration: none;
+        margin-top: 10px;
+        border-radius: 4px;
+        font-weight: bold;
+      }
+      /* Hide menu on small screens */
+      @media screen and (max-width: 600px) {
+        .navbar .menu {
+          display: none;
+        }
+        
+        .navbar .menu.show {
+          display: block;
+        }
+        
+        .navbar .icon {
+          display: block;
+          float: right;
+          padding: 16px;
+          color: #fff;
+          cursor: pointer;
+        }
+      }
+      .rmore{
+      text-decoration: none;
+      background-color: rgb(0, 183, 255);
+      color: white;
+      font-size: 150%;
+      font-weight: bold;
+      display: inline-block;
+      padding: 8px 16px;
+      border-radius: 3px;
+    }
+  /* body{
+    background-color: black;
+    background-image: url('robo.jpg');
+    background-size: cover;
+  } */
+  p{
+    background-color: #00000057;
+  }
+  
+    </style>
+
+    <div class='navbar'>
+        <img src='../staticFiles/favi.png' alt='Logo'>
+        <h1 style='color: #00CCFF;'><a href='/' style='text-decoration: none;color: #00CCFF;'>Hexeba</a></h1>
+        <div class='menu' id='menu'>
+          <a href='/signup' style='font-weight: bold;'>Signup</a>
+          <a href='/signin' style='font-weight: bold;'>Signin</a>
+          <!-- <a href='#services' style='font-weight: bold;'>Services</a>
+          <a href='#contact' style='font-weight: bold;'>Contact</a> -->
+        </div>
+        <a class='icon' onclick='toggleMenu()'>&#9776;</a>
+      </div>
+
+<div id="data"></div>
+      <div class='container'>
+        <form id='loginForm'>
+            <h2>Login</h2>
+            <div class='input-group'>
+                <label for='loginEmail'>Email</label>
+                <input type='email' name='email' id='loginEmail' required>
+            </div>
+            <div class='input-group'>
+                <label for='loginPassword'>Password</label>
+                <input type='password' name='password' id='loginPassword' required>
+            </div>
+            <div class='input-group'>
+              <label for='loginService'>Service</label>
+              <select name='services' id='loginService' style='background-color: black;color:white;'>
+                <option value='smartdevices'>Smart Devices</option>
+                <option value='smarttrader'>Smart Trader</option>
+                <option value='smartpredict'>Smart Predict</option>
+              </select>
+          </div>
+            <button type='submit' class='btn'>Log In</button>
+            <div class='switch-form'>
+                <a href='/signup' >Don't have an account? Sign up</a>
+            </div>
+        </form>
+    </div>
+<div id="exinfo"></div>
+    <script>
+
+        document.getElementById('loginForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+            var message = 'signin';
+            sendData(message);
+            // Login form submission logic here
+        });
+    </script>
+  </div>
+</body>
+<script>
+        function toggleMenu() {
+      var menu = document.getElementById('menu');
+      menu.classList.toggle('show');
+    }
+</script>
+<script>
+  function read_d_data(devicedata){
+ 
+    var datax = devicedata;
+   
+    var x = [];
+    ld = datax.length;
+    var data = "";
+    var dv = "";
+    for(var i=0; i<ld; i++){
+    dv = datax[i];
+    if((dv!=",")&&(dv!="")){
+    data = data + dv;
+    }
+    if((dv==",")||(i==ld-1)){
+    if(data !=""){
+    x.push(data);
+    data = "";
+    }
+    }
+    }
+    
+    return x; 
+    }
+
+
+
+    function sendData(messagex) {
+      var message = 'signin';
+  var http = new XMLHttpRequest();
+var url = '/validate';
+var email = document.getElementById('loginEmail').value;
+var password = document.getElementById('loginPassword').value;
+var service = document.getElementById('loginService').value;
+
+var message = messagex;
+
+var params = `message=${message}&services=${service}&email=${email}&password=${password}&column1=email&column2=password`;
+
+http.open('POST', url, true);
+
+//Send the proper header information along with the request
+http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+
+http.onreadystatechange = function() {//Call a function when the state changes.
+    if(http.readyState == 4 && http.status == 200) {
+     //  alert(http.responseText);
+    
+    var urldata = http.responseText;
+    var user = read_d_data(urldata)
+    alert(user[2])
+    window.open("/panel","_self");
+   // bbody.style.display = 'block';
+
+   // var lbody = document.getElementById('lbody');
+  //  lbody.style.display = 'none';
+
+// window.location.href = 'index.html';
+    }
+}
+http.send(params);
+  }
+/* function signout(){
+    var lbody = document.getElementById('lbody');
+    lbody.style.display = 'block';
+    var bbody = document.getElementById('bbody');
+    bbody.style.display = 'none';
+    document.title = 'Login';
+    window.history.replaceState('stateObj','newpage','signin.html');
+    body.style.backgroundImage = 'url()';
+    }*/
+    function signout(){
+      var lbody = document.getElementById('lbody');
+      lbody.style.display = 'block';
+      var bbody = document.getElementById('bbody');
+      bbody.style.display = 'none';
+      document.title = 'Login';
+      window.history.replaceState('stateObj','newpage','signin.html');
+      var b= document.getElementById("body");
+      b.style.backgroundColor = "black";
+      b.style.backgroundImage = "url(../staticFiles/robo.jpg)";
+      }
+</script>
+
+<script>
+  var lbody = document.getElementById('lbody');
+  lbody.style.display = 'block';
+  var bbody = document.getElementById('bbody');
+  bbody.style.display = 'none';
+  bbody.style.backgroundImage = "url(../staticFiles/dashboard.gif)";
+  bbody.style.backgroundSize = "cover";
+
+
+ 
+
+</script>
+</html>

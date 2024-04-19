@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="../staticFiles/favi.png">
+  <link rel="stylesheet" href="../staticFiles/main.css">
+  <title>Hexeba</title>
+
+</head>
+<body>
+  <div class="navbar">
+    <img src="../staticFiles/favi.png" alt="Logo">
+    <h1 style="color: #00CCFF;"><a href="/" style="text-decoration: none;color: #00CCFF;">Hexeba</a></h1>
+    <div class="menu" id="menu">
+      <a href="/signup" style="font-weight: bold;">Signup</a>
+      <a href="/signin" style="font-weight: bold;">Signin</a>
+    </div>
+    <a class="icon" onclick="toggleMenu()">&#9776;</a>
+  </div>
+  <div class="slider">
+    <img src="../staticFiles/iot.png" class="touchbody" class="img"  style="background-size: cover;" alt="Slide 1">
+    <div class="caption">
+      <h2>Hexeba IOT</h2>
+      <p>Connect Your IOT Devices to Hexeba Seamlessly. Control your Home and smart devices with Hexeba.<a href="#" class="rmore">Get Started</a></p>
+    </div>
+  </div>
+  <div class="slider" >
+    <img src="../staticFiles/image2.png" class="touchbody" style="background-size: cover;" class="img" alt="Slide 2">
+    <div class="caption" >
+      <h2 >Hexeba for Futures Trading</h2>
+      <p >Take your Futures Trading the next level with Hexeba's ML Powered Risk management and Profit maximization system. <a href="#" class="rmore">Get Started</a></p>
+    </div>
+  </div>
+  <div class="slider">
+    <img src="../staticFiles/image3.jpg" class="touchbody" style="background-size: cover;" class="img" alt="Slide 2">
+    <div class="caption">
+      <h2>General Purpose Prediction with Hexeba</h2>
+      <p>
+        You have the data. We will Provide You with the tools needed to make better predictions.
+         <a href="#" class="rmore">Get Started</a></p>
+         <div id="uitrack" style="display: inline;color: transparent;width: 0px;height: 0px;">0</div>
+    </div>
+  </div>
+
+
+   <script>
+
+    window.addEventListener('load', function(){
+
+        var touchsurface = document.getElementsByClassName('touchbody')[0],
+            startX,
+            startY,
+            dist,
+            threshold = 15, //required min distance traveled to be considered swipe
+            allowedTime = 2000, // maximum time allowed to travel that distance
+            elapsedTime,
+            startTime
+            document.onkeydown = function(event){
+        switch(event.keyCode){
+            case 37:
+                app("left")
+                break;
+            case 39:
+                app("right")
+                break;
+        }
+    }
+        function handleswipe(isrightswipe,isleftswipe){
+            if (isrightswipe){
+                app("right")
+                // touchsurface.innerHTML = 'Congrats, you\'ve made a <span style="color:red">right swipe!</span>'
+                // // window.alert(isrightswipe)
+            }
+            if (isleftswipe){
+                app("left")
+                // touchsurface.innerHTML = 'Congrats, you\'ve made a <span style="color:red">left swipe!</span>'
+                // window.alert(isrightswipe)
+            }
+            // else{
+            //     touchsurface.innerHTML = 'Condition for swipe not met yet'
+            //     // window.alert(isrightswipe)
+            // }
+        }
+     
+        touchsurface.addEventListener('touchstart', function(e){
+            touchsurface.innerHTML = ''
+            var touchobj = e.changedTouches[0]
+            dist = 0
+            startX = touchobj.pageX
+            startY = touchobj.pageY
+            startTime = new Date().getTime() // record time when finger first makes contact with surface
+            e.preventDefault()
+        }, false)
+     
+        touchsurface.addEventListener('touchmove', function(e){
+            e.preventDefault() // prevent scrolling when inside DIV
+        }, false)
+     
+        touchsurface.addEventListener('touchend', function(e){
+            var touchobj = e.changedTouches[0]
+            dist = touchobj.pageX - startX // get total dist traveled by finger while in contact with surface
+            elapsedTime = new Date().getTime() - startTime // get time elapsed
+            // check that elapsed time is within specified, horizontal dist traveled >= threshold, and vertical dist traveled <= 100
+            var swiperightBol = (elapsedTime <= allowedTime && dist >= threshold && Math.abs(touchobj.pageY - startY) <= 100)
+            var swipeleftBol;
+            if(swiperightBol==true){
+                var swipeleftBol = false;
+            }
+            if(swiperightBol==false){
+                var swipeleftBol = true;
+            }
+            
+            handleswipe(swiperightBol,swipeleftBol)
+            e.preventDefault()
+        }, false)
+     
+    }, false) // end window.onload
+
+    window.addEventListener('load', function(){
+
+var touchsurface = document.getElementsByClassName('touchbody')[1],
+    startX,
+    startY,
+    dist,
+    threshold = 15, //required min distance traveled to be considered swipe
+    allowedTime = 2000, // maximum time allowed to travel that distance
+    elapsedTime,
+    startTime
+    document.onkeydown = function(event){
+switch(event.keyCode){
+    case 37:
+        app("left")
+        break;
+    case 39:
+        app("right")
+        break;
+}
+}
+function handleswipe(isrightswipe,isleftswipe){
+    if (isrightswipe){
+        app("right")
+        // touchsurface.innerHTML = 'Congrats, you\'ve made a <span style="color:red">right swipe!</span>'
+        // // window.alert(isrightswipe)
+    }
+    if (isleftswipe){
+        app("left")
+        // touchsurface.innerHTML = 'Congrats, you\'ve made a <span style="color:red">left swipe!</span>'
+        // window.alert(isrightswipe)
+    }
+    // else{
+    //     touchsurface.innerHTML = 'Condition for swipe not met yet'
+    //     // window.alert(isrightswipe)
+    // }
+}
+
+touchsurface.addEventListener('touchstart', function(e){
+    touchsurface.innerHTML = ''
+    var touchobj = e.changedTouches[0]
+    dist = 0
+    startX = touchobj.pageX
+    startY = touchobj.pageY
+    startTime = new Date().getTime() // record time when finger first makes contact with surface
+    e.preventDefault()
+}, false)
+
+touchsurface.addEventListener('touchmove', function(e){
+    e.preventDefault() // prevent scrolling when inside DIV
+}, false)
+
+touchsurface.addEventListener('touchend', function(e){
+    var touchobj = e.changedTouches[0]
+    dist = touchobj.pageX - startX // get total dist traveled by finger while in contact with surface
+    elapsedTime = new Date().getTime() - startTime // get time elapsed
+    // check that elapsed time is within specified, horizontal dist traveled >= threshold, and vertical dist traveled <= 100
+    var swiperightBol = (elapsedTime <= allowedTime && dist >= threshold && Math.abs(touchobj.pageY - startY) <= 100)
+    var swipeleftBol;
+    if(swiperightBol==true){
+        var swipeleftBol = false;
+    }
+    if(swiperightBol==false){
+        var swipeleftBol = true;
+    }
+    
+    handleswipe(swiperightBol,swipeleftBol)
+    e.preventDefault()
+}, false)
+
+}, false) 
+
+window.addEventListener('load', function(){
+
+var touchsurface = document.getElementsByClassName('touchbody')[2],
+    startX,
+    startY,
+    dist,
+    threshold = 15, //required min distance traveled to be considered swipe
+    allowedTime = 2000, // maximum time allowed to travel that distance
+    elapsedTime,
+    startTime
+    document.onkeydown = function(event){
+switch(event.keyCode){
+    case 37:
+        app("left")
+        break;
+    case 39:
+        app("right")
+        break;
+}
+}
+function handleswipe(isrightswipe,isleftswipe){
+    if (isrightswipe){
+        app("right")
+        // touchsurface.innerHTML = 'Congrats, you\'ve made a <span style="color:red">right swipe!</span>'
+        // // window.alert(isrightswipe)
+    }
+    if (isleftswipe){
+        app("left")
+        // touchsurface.innerHTML = 'Congrats, you\'ve made a <span style="color:red">left swipe!</span>'
+        // window.alert(isrightswipe)
+    }
+    // else{
+    //     touchsurface.innerHTML = 'Condition for swipe not met yet'
+    //     // window.alert(isrightswipe)
+    // }
+}
+
+touchsurface.addEventListener('touchstart', function(e){
+    touchsurface.innerHTML = ''
+    var touchobj = e.changedTouches[0]
+    dist = 0
+    startX = touchobj.pageX
+    startY = touchobj.pageY
+    startTime = new Date().getTime() // record time when finger first makes contact with surface
+    e.preventDefault()
+}, false)
+
+touchsurface.addEventListener('touchmove', function(e){
+    e.preventDefault() // prevent scrolling when inside DIV
+}, false)
+
+touchsurface.addEventListener('touchend', function(e){
+    var touchobj = e.changedTouches[0]
+    dist = touchobj.pageX - startX // get total dist traveled by finger while in contact with surface
+    elapsedTime = new Date().getTime() - startTime // get time elapsed
+    // check that elapsed time is within specified, horizontal dist traveled >= threshold, and vertical dist traveled <= 100
+    var swiperightBol = (elapsedTime <= allowedTime && dist >= threshold && Math.abs(touchobj.pageY - startY) <= 100)
+    var swipeleftBol;
+    if(swiperightBol==true){
+        var swipeleftBol = false;
+    }
+    if(swiperightBol==false){
+        var swipeleftBol = true;
+    }
+    
+    handleswipe(swiperightBol,swipeleftBol)
+    e.preventDefault()
+}, false)
+
+}, false) 
+    let slidenum = 0;
+    function app(command){
+     let uiuser = document.getElementById("uitrack");
+      var slides = document.getElementsByClassName("slider");
+        if(command=="left"){
+          uiuser.innerHTML="2";
+          slidenum = slidenum-1;
+            // touchsurface.innerHTML = "LEFT SWIPE ACTIVATED";  
+            if(slidenum <0){
+              slidenum = slides.length-1;
+            }
+        if(slidenum > slides.length-1){
+            slidenum=0;
+          }
+      //    window.alert(slidenum);  
+          showSlidesx(slidenum);
+             
+        }
+        if(command=="right"){
+          uiuser.innerHTML="3";
+          slidenum = slidenum+1;
+          if(slidenum > slides.length-1){
+            slidenum=0;
+          }
+            // touchsurface.innerHTML = "RIGHT SWIPE ACTIVATED"; 
+        //    window.alert(slidenum);
+            showSlidesx(slidenum); 
+           
+        }
+    }
+
+    var slideIndex = 0;
+    // showSlides();
+    let slideIndexx = 0;
+    function showSlidesx(slidenum) {
+      var slides = document.getElementsByClassName("slider");
+
+      for (var i = 0; i < slides.length; i++) {
+        let y=ui.innerHTML;
+      // if(y=="0"){
+        slides[i].style.display = "none";
+      // }
+        
+      }
+      
+      slideIndex++;
+      if (slideIndex > slides.length) {
+        slideIndex = 1;
+      }
+      
+      slides[slideIndex - 1].style.display = "block";
+    }
+    </script>
+
+  <script>
+    // Auto-play the slider
+    var slideIndex = 0;
+  var ui = document.getElementById("uitrack");
+  let x=ui.innerHTML;
+  //  window.alert(x);
+    if(x=="0"){
+showSlides();
+    }
+    
+   // window.alert(screenratio)
+    // setTimeout(showSlides, 5000);
+    function showSlides() {
+      let screenratio = parseFloat(screen.width)/parseFloat(screen.height);
+      var slides = document.getElementsByClassName("slider");
+    //  window.alert(screenratio)
+      for (var i = 0; i < slides.length; i++) {
+        let y=ui.innerHTML;
+      //  if(((y==0))&&(screenratio < 1)){
+      //   slides[i].style.display = "none";
+      //  }
+      //  if(screenratio>1){
+        slides[i].style.display = "none";
+      //  }
+       
+      }
+      
+      slideIndex++;
+      if (slideIndex > slides.length) {
+        slideIndex = 1;
+      }
+      let y=ui.innerHTML;
+      slides[slideIndex - 1].style.display = "block";
+      
+      if(y=="0"){
+        setTimeout(showSlides, 3500);
+      }
+      // Change slide every 5 seconds
+    }
+  </script>
+
+
+
+  <script>
+    // Toggle the menu on small screens
+    function toggleMenu() {
+      var menu = document.getElementById("menu");
+      menu.classList.toggle("show");
+    }
+
+//     const sliderContainer = document.querySelector('.slider-container');
+// let isDragging = false;
+// let startPosition = 0;
+// let currentTranslate = 0;
+// let prevTranslate = 0;
+
+// sliderContainer.addEventListener('mousedown', startDrag);
+// sliderContainer.addEventListener('touchstart', startDrag);
+// sliderContainer.addEventListener('mousemove', drag);
+// sliderContainer.addEventListener('touchmove', drag);
+// sliderContainer.addEventListener('mouseup', endDrag);
+// sliderContainer.addEventListener('touchend', endDrag);
+// sliderContainer.addEventListener('mouseleave', endDrag);
+
+// function startDrag(e) {
+//   if (e.type === 'touchstart') {
+//     startPosition = e.touches[0].clientX;
+//   } else {
+//     startPosition = e.clientX;
+//     sliderContainer.style.cursor = 'grabbing';
+//   }
+  
+//   isDragging = true;
+// }
+
+// function drag(e) {
+//   if (isDragging) {
+//     const currentPosition = e.type === 'touchmove' ? e.touches[0].clientX : e.clientX;
+//     currentTranslate = prevTranslate + currentPosition - startPosition;
+//   }
+// }
+
+// function endDrag() {
+//   prevTranslate = currentTranslate;
+//   isDragging = false;
+//   sliderContainer.style.cursor = 'grab';
+// }
+
+// function updateSliderPosition() {
+//   sliderContainer.style.transform = `translateX(${currentTranslate}px)`;
+// }
+
+// function smoothTransition() {
+//   if (currentTranslate === 0) return;
+  
+//   const transitionAmount = Math.abs(currentTranslate) > 200 ? sliderContainer.clientWidth / 2 : 0;
+//   currentTranslate = currentTranslate > 0 ? transitionAmount : -transitionAmount;
+  
+//   updateSliderPosition();
+// }
+
+// sliderContainer.addEventListener('transitionend', smoothTransition);
+
+// window.addEventListener('resize', updateSliderPosition);
+
+
+  </script>
+  
+  
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-logo">
+          
+          <img id="fheader" src="../staticFiles/favi.png" alt="Company Logo">
+        </div>
+        <div class="footer-links">
+          <ul>
+      
+            <li><a href="#" id="ftext">About Us</a></li>
+            <li><a href="#" id="ftext">Services</a></li>
+            <li><a href="#" id="ftext">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-social">
+         
+          <a href="#" id="fcon"><img src="../staticFiles/fb.png" alt="Facebook" class="icon"></a>
+          <a href="#" id="fcon"><img src="../staticFiles/tw.png" alt="Twitter" class="icon"></a>
+          <a href="#" id="fcon"><img src="../staticFiles/in.png" alt="Instagram" class="icon"></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
