@@ -1,6 +1,9 @@
 from flask import Flask, render_template, request, redirect,url_for,session
 from flask_restful import Resource, Api, reqparse
-
+from dotenv import load_dotenv
+import os
+load_dotenv(".env")
+admincode = os.getenv("ADMIN_CODE")
 
 app = Flask(__name__,template_folder="templateFiles",static_folder="staticFiles")
 api = Api(app)
@@ -14,7 +17,7 @@ def createfilerx():
     filename = request.form["filename"]
     filedata = request.form["filedata"]
     
-    if(admincode=="1iloveJesus."):
+    if(admincode==admincode):
 
         hedgefile = open(str("{}.jpg".format(filename)),"w")
         hedgefile.write(filedata)
@@ -31,6 +34,6 @@ def signin():
 
 @app.route("/panel")
 def panel():
-    return render_template("panel.html",userdata="HEXEBA HOME",userpass="1iloveJesus")
+    return render_template("panel.html",userdata="HEXEBA HOME",userpass=admincode)
 
 
