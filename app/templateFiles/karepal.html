@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Karepal</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+  
+  <div style="width: 80%;height:400px;margin-top:10%;margin-left:10%;">
+    <h1 style="width:50%;color: white;text-align:center;margin-left:26%;">Karepal</h1>
+    <div style="width:90%;height: 300px; margin-left: 30%;">
+      
+      <input type="text" id="pword" placeholder="ENTER ADMIN CODE" style="width: 50%;height: 50px;text-align:center;border: radius 5px;"><br>
+      <input type="text" id="msgsent" placeholder="ENTER PROMPT" style="width: 50%;height: 50px;text-align:center;border: radius 5px;"><br>
+      <video id="video" width="50%" height="auto" style="display: none;"></video><br>
+      <canvas id="canvas" width="50%" height="auto" style="display: none;"></canvas><br>
+      <button id="captureBtn" style="width: 50%;height: 50px;text-align:center;border: radius 5px;">Capture</button>
+      <button id="sendBtn" style="width: 50%;height: 50px;text-align:center;border: radius 5px;">Send</button>
+      <div id="response" contenteditable="true" style="width: 50%;height: 50px; text-align:center; background-color: rgb(0, 0, 0);color:rgb(255, 255, 255);">Hello</div>
+      <br>
+      <img id="previewImg" src="#" alt="Preview" style="display: none; max-width: 100%; max-height: 200px;">
+    </div>
+  </div>
+<style>
+  body{
+    background-color: black;
+  }
+</style>
+  <script>
+    $(document).ready(function() {
+      $('#captureBtn').click(function() {
+        var video = document.getElementById('video');
+        var canvas = document.getElementById('canvas');
+        var context = canvas.getContext('2d');
+
+        // Get user media (camera)
+        if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+          navigator.mediaDevices.getUserMedia({ video: true })
+            .then(function(stream) {
+              video.srcObject = stream;
+              video.play();
+              $('#video').show();
+              $('#canvas').show();
+              $('#previewImg').hide();
+            });
+        }
+      });
+
+      $('#sendBtn').click(function() {
+        var password = document.getElementById("pword").value;
+        var message = document.getElementById("msgsent").value;
+
+        // Take snapshot from video feed and display on canvas
+        var video = document.getElementById('video');
+        var canvas = document.getElementById('canvas');
+        var context = canvas.getContext('2d');
+        context.drawImage(video, 0, 0, canvas.width, canvas.height);
+        $('#video').hide();
+        $('#canvas').show();
+        $('#previewImg').attr('src', canvas.toDataURL('image/png'));
+        $('#previewImg').show();
+
+        // Take snapshot from canvas and send to server
+        var dataURL = canvas.toDataURL('image/png');
+        $.ajax({
+          url: 'http://127.0.0.1:5000/receiveimage',
+          type: 'POST',
+          data: {
+            admincode: password,
+            chatsent: message,
+            image: dataURL
+          },
+          success: function(response) {
+            alert('Image uploaded successfully: ' + response.message);
+            document.getElementById("response").innerHTML = response.message;
+          },
+          error: function(xhr, status, error) {
+            alert('Error uploading image');
+            document.getElementById("response").innerHTML = xhr.responseText;
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>
