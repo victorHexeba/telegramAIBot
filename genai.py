@@ -1,10 +1,4 @@
-import google.generativeai as genai
-from dotenv import load_dotenv
-import os
-load_dotenv(".env")
-gkey = os.getenv("GOOGLE_KEY")
-genai.configure(api_key=gkey)
-model = genai.GenerativeModel("gemini-pro")
-response = model.generate_content("hi")
-print(response.text)
-#TESTING
+from app.main import app
+ 
+if __name__ == "__main__":
+        app.run(host='0.0.0.0',debug=True)
