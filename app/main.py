@@ -182,6 +182,7 @@ class Sendtweet(Resource):
                         "Request returned an error: {} {}".format(response.status_code, response.text)
                     )
 
+                
                 print("Response code: {}".format(response.status_code))
 
                 # Saving the response as JSON
